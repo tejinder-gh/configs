@@ -1,0 +1,175 @@
+{
+	"[css]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[java]": {
+		"editor.defaultFormatter": "redhat.java"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "vscode.typescript-language-features"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[html]": {
+		"editor.defaultFormatter": "vscode.html-language-features"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"editor.codeActionsOnSave": {
+		"source.fixAll": true,
+		"source.fixAll.eslint": true
+	},
+	"workbench.editorAssociations": {
+		"*.ipynb": "jupyter-notebook"
+	},
+	"workbench.colorCustomizations": {
+		"editor.lineHighlightBackground": "#1073cf2d",
+		"editor.lineHighlightBorder": "#9fced11f"
+	},
+	"terminal.integrated.defaultProfile.windows": "PowerShell",
+	"files.autoSaveDelay": 5000,
+	"emmet.includeLanguages": {
+		"typescript": "typescriptreact",
+		"javascript": "javascriptreact"
+	},
+	"editor.suggestSelection": "first",
+	"editor.autoClosingBrackets": "always",
+	"editor.fontSize": 18,
+	"editor.detectIndentation": true,
+	"editor.wordWrap": "on",
+	"editor.bracketPairColorization.enabled": true,
+	"editor.defaultFormatter": "dbaeumer.vscode-eslint",
+	"editor.hover.delay": 300,
+	"editor.cursorBlinking": "smooth",
+	"editor.minimap.enabled": false,
+	"editor.accessibilitySupport": "on",
+	"editor.formatOnPaste": true,
+	"editor.formatOnSave": true,
+	"editor.formatOnType": true,
+	"editor.tabSize": 2,
+	"editor.stickyTabStops": true,
+	"editor.tabCompletion": "onlySnippets",
+	"diffEditor.wordWrap": "off",
+	"editor.guides.indentation": false,
+	"editor.guides.bracketPairs": false,
+	"editor.inlayHints.enabled": "off",
+	"workbench.editor.enablePreviewFromCodeNavigation": true,
+	"workbench.editor.enablePreviewFromQuickOpen": true,
+	"workbench.editor.highlightModifiedTabs": true,
+	"javascript.format.insertSpaceAfterConstructor": true,
+	"javascript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": true,
+	"prettier.tabWidth": 2,
+	"debug.console.fontSize": 18,
+	"terminal.integrated.fontSize": 18,
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"prettier.useTabs": true,
+	"eslint.alwaysShowStatus": true,
+	"eslint.debug": true,
+	"eslint.format.enable": true,
+	"eslint.lintTask.enable": true,
+	"eslint.nodeEnv": "",
+	"eslint.probe": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"html",
+		"markdown",
+		"node"
+	],
+
+	"javascript.preferences.quoteStyle": "single",
+	"typescript.preferences.quoteStyle": "single",
+	"prettier.jsxSingleQuote": true,
+	"prettier.singleQuote": true,
+	"eslint.codeAction.showDocumentation": {
+		"enable": true
+	},
+	"eslint.onIgnoredFiles": "warn",
+	"prettier.endOfLine": "crlf",
+	"prettier.htmlWhitespaceSensitivity": "strict",
+	"prettier.bracketSameLine": true,
+	"files.insertFinalNewline": true,
+
+	"terminal.integrated.tabs.enabled": true,
+
+	"files.exclude": {
+		"**/.classpath": true,
+		"**/.project": true,
+		"**/.settings": true,
+		"**/.factorypath": true
+	},
+	"security.workspace.trust.untrustedFiles": "newWindow",
+	"eslint.validate": ["javascript", "typescript", "react"],
+
+	"git.confirmSync": false,
+	"git.autofetch": true,
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"audioCues.lineHasBreakpoint": "off",
+	"audioCues.lineHasError": "off",
+	"audioCues.lineHasFoldedArea": "off",
+	"audioCues.lineHasInlineSuggestion": "off",
+	"audioCues.noInlayHints": "off",
+	"audioCues.onDebugBreak": "off",
+	"emmet.showAbbreviationSuggestions": false,
+	"emmet.showExpandedAbbreviation": "never",
+	"blockman.n01LineHeight": 0,
+	"editor.inlineSuggest.enabled": true,
+
+	"blockman.n05CustomColorOfDepth0": "none",
+	"blockman.n06CustomColorOfDepth1": "none",
+	"blockman.n07CustomColorOfDepth2": "none",
+	"blockman.n09CustomColorOfDepth4": "none",
+	"blockman.n10CustomColorOfDepth5": "none",
+	"blockman.n11CustomColorOfDepth6": "none",
+	"blockman.n12CustomColorOfDepth7": "none",
+	"blockman.n13CustomColorOfDepth8": "none",
+	"blockman.n14CustomColorOfDepth9": "none",
+	"blockman.n15CustomColorOfDepth10": "none",
+	"blockman.n08CustomColorOfDepth3": "none",
+	"blockman.n17CustomColorOfFocusedBlock": "none",
+	"Notes.notesLocation": "c:\\Users\\tejising\\Desktop\\Notes\\vscode",
+	"turboConsoleLog.delimiterInsideMessage": "-",
+	"turboConsoleLog.logMessagePrefix": "*",
+	"editor.fontWeight": "normal",
+	"better-comments.highlightPlainText": true,
+	"[scss]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"terminal.integrated.confirmOnExit": "hasChildProcesses",
+	"terminal.integrated.confirmOnKill": "always",
+	"editor.unicodeHighlight.nonBasicASCII": false,
+	"editor.unicodeHighlight.invisibleCharacters": false,
+	"svgPreview.style": {
+		"html": {
+			"background-color": "white"
+			// "background-image": "linear-gradient(45deg, #141414 25%, transparent 25%, transparent 75%, #141414 75%, #141414), linear-gradient(45deg, #141414 25%, transparent 25%, transparent 75%, #141414 75%, #141414)"
+		}
+	},
+	"turboConsoleLog.logFunction": "log",
+	"diffEditor.ignoreTrimWhitespace": false,
+	"window.commandCenter": true,
+	"workbench.colorTheme": "Just Black",
+	"git.mergeEditor": true,
+	"git.closeDiffOnOperation": true,
+	"git.terminalGitEditor": true,
+	"window.zoomLevel": -1,
+	"workbench.editor.defaultBinaryEditor": "vscode.markdown.preview.editor",
+	"[sql]": {
+		"editor.defaultFormatter": "mtxr.sqltools"
+	},
+	"audioCues.volume": 0,
+	"turboConsoleLog.quote": "'",
+	"editor.accessibilityPageSize": 12
+}
