@@ -1,0 +1,59 @@
+Mac cmds:
+goto in Finder	shift+cmd+g
+	
+remove dir	rm -r test
+toggle hidden files	rm -rf maven   
+Find files/dir in folder	ls -lrt | grep -i test
+location of installed package	which java
+	
+install home brew	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+detailed network analysis for particular port 	netstat -vanp tcp | grep 8080  
+find utilization of particular port 	lsof -i tcp:8080
+stop the process wth id	kill -15 processID
+task kill alternate	netstat -ano | findstr :8080
+taskkill /PID 21752 /F
+npx kill-port 3000
+chrome without security(CORS disabled)	open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security
+proc	SELECT * FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_DEFINITION LIKE '%Text to find%' ORDER BY ROUTINE_NAME;
+youtube video speed	document.getElementsByClassName("video-stream html5-main-video")[0].playbackRate = 3
+git ssh	git remote set-url origin ssh://git@git.gartner.com:7999/tn/gemini.git
+fatal: Not possible to fast-forward, aborting(git)	git pull origin --rebase
+
+remove cc	rm -r ./node_modules/tn-components-library
+keystore	keytool -import -alias gartner -file ~/ca_certs/gartner_ca_bundle_20210429.pem 
+java home env	export JAVA_HOME=/Users/tejindersingh/Library/Java/JavaVirtualMachines/corretto-17.0.6/Contents/Home 
+puppeteer launch config	const browser = await puppeteer.launch({ headless: false, args: ['--disable-gpu', '--full-memory-crash-report', '--unlimited-storage',	
+   	'--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', "--user-data-dir='/tmp/temporary-chrome-profile-dir'", '--disable-web-security',
+   	'--disable-site-isolation-trials'],pipe: true, executablePath: chromePath });
+find anything in fs	find / -type d -name "*Chrome.app"
+error: cannot pull with rebase: You have unstaged changes.
+error: please commit or stash them.	git pull --rebase --autostash
+	
+
+
+Maven cmds:
+clean package w/o tests	mvn clean package -DskipTests=true 
+vm options	-Dspring.profiles.active=local
+	clean package -f pom.xml
+
+	ps	gemini
+working dir		memberweb/react/web.app
+deployment dir		/gemini/memberweb/react/web.app/src/main/webapp
+classpath mod		tnrecruit.app
+
+
+Steps:
+Error: maven@3.5 has been disabled because it is not maintained upstream!
+	brew edit maven@3.5
+	Remove the line:
+		disable! date: "2022-07-31", because: :unmaintained
+	brew install maven@3.5
+	
+Links:
+maven specific version download
+	https://dlcdn.apache.org/maven/maven-3/
+
+
+Screen Snippets:
+SSL certificate issue for db connection in localhost, no appropriate protocol
+￼
