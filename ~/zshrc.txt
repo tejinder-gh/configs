@@ -1,8 +1,12 @@
 alias copy='pbcopy'
 alias zshrc='code ~/.zshrc'
 
+alias note="code ~/configs/notes/notes.txt"
+
+alias commitconfig="cd ~/configs && git add . && git commit -m \"commit\" && git push"
+
 alias setupconfig="cd ~ && git clone git@github.com:tejinder-pal-singh/configs.git"
-alias updateconfig="cp ~/.zshrc ~/configs/~/zshrc.txt && cp ~/Library/Application\ Support/Code/User/settings.json ~/configs/vscode/settings.json && cd ~/configs && git add . && git commit -m \"update\" && git push"
+alias updateconfig="cp ~/.zshrc ~/configs/~/zshrc.txt && cp ~/Library/Application\ Support/Code/User/settings.json ~/configs/vscode/settings.json && commitconfig"
 
 alias copyzshrc='cat ~/.zshrc | copy'
 
