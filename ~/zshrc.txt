@@ -45,6 +45,7 @@ alias generatefont='npm run generate-font && npm run build'
 alias gc='git checkout'
 alias gac='git add . && git commit -m'
 alias gl='git log --graph --decorate --oneline'
+alias dsstore='find . -name .DS_Store -print0 | xargs -0 git rm -f --ignore-unmatch'
 
 alias freshinstall='rm -rf package-lock.json node_modules && npm i'
 
