@@ -3,6 +3,8 @@ alias zshrc='code ~/.zshrc'
 
 alias note="code ~/configs/notes/notes.txt"
 
+alias shutdown='sudo shutdown -h'
+
 alias commitconfig="cd ~/configs && git add . && git commit -m \"commit\" && git push"
 
 alias setupconfig="cd ~ && git clone git@github.com:tejinder-pal-singh/configs.git"
@@ -104,7 +106,7 @@ ZSH_THEME="robbyrussell"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -133,7 +135,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 

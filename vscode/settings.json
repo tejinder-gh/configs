@@ -160,7 +160,7 @@
 	"turboConsoleLog.logFunction": "log",
 	"diffEditor.ignoreTrimWhitespace": false,
 	"window.commandCenter": true,
-	"workbench.colorTheme": "Just Black",
+	"workbench.colorTheme": "Night Owl",
 	"git.mergeEditor": true,
 	"git.closeDiffOnOperation": true,
 	"git.terminalGitEditor": true,
