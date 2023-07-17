@@ -14,15 +14,16 @@ alias copyzshrc='cat ~/.zshrc | copy'
 
 alias yt='echo "document.getElementsByClassName(\"video-stream html5-main-video\")[0].playbackRate = 3" | copy'
 
-alias danger='open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security'
+alias copytn='echo http://homepage.tndev.aws.gartner.com/home | copy'
+
+alias danger='open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security && copytn'
 
 alias tn='cd /Users/tejindersingh/talentNeuron'
 alias cc='cd /Users/tejindersingh/talentNeuron/components-library'
 alias tnr='cd /Users/tejindersingh/talentNeuron/gemini/memberweb/react'
 alias tnp='/Users/tejindersingh/talentNeuron/talentneuron-plan2.x---platform/sourcecode/tnp.web/web.client'
 
-alias runcc="cd /Users/tejindersingh/talentNeuron/components-library && 
-npm run storybook"
+alias runcc="cd /Users/tejindersingh/talentNeuron/components-library && code . && npm run storybook "
 alias runtnr='cd 
 /Users/tejindersingh/talentNeuron/gemini/memberweb/react/web.client/ && 
 code . && npm start'
