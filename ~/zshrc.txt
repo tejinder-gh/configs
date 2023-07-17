@@ -14,9 +14,9 @@ alias copyzshrc='cat ~/.zshrc | copy'
 
 alias yt='echo "document.getElementsByClassName(\"video-stream html5-main-video\")[0].playbackRate = 3" | copy'
 
-alias copytn='echo http://homepage.tndev.aws.gartner.com/home | copy'
+alias copytnurl='echo http://homepage.tndev.aws.gartner.com/home | copy'
 
-alias danger='open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security && copytn'
+alias danger="open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir=\"/tmp/chrome_dev_test\" --disable-web-security http://homepage.tndev.aws.gartner.com/home && copytnurl"
 
 alias tn='cd /Users/tejindersingh/talentNeuron'
 alias cc='cd /Users/tejindersingh/talentNeuron/components-library'
@@ -152,7 +152,7 @@ source $ZSH/oh-my-zsh.sh
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+  export EDITOR='vscode'
 # fi
 
 # Compilation flags
