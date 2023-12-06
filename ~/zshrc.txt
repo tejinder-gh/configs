@@ -1,11 +1,14 @@
+export DEV=/Users/tejindersingh/Developer
+export TN=$DEV/TN
+
 alias zshrc='code ~/.zshrc'
 
 # config repo
-alias notes="code ~/configs/notes/notes.txt"
-alias commitconfig="cd ~/configs && git add . && git commit -m \"commit\" && git push"
-alias setupconfig="cd ~ && git clone git@github.com:tejinder-pal-singh/configs.git"
-alias updateconfig="cp ~/.zshrc ~/configs/~/zshrc.txt && cp ~/Library/Application\ Support/Code/User/settings.json ~/configs/vscode/settings.json && commitconfig"
-
+alias notes="code $DEV/configs/notes/notes.txt"
+alias commitconfig="cd $DEV/configs && git add . && git commit -m \"commit\" && git push"
+alias setupconfig="cd $DEV && git clone git@github.com:tejinder-pal-singh/configs.git"
+alias updateconfig="cp ~/.zshrc $DEV/configs/~/zshrc.txt && cp $DEV/Library/Application\ Support/Code/User/settings.json $DEV/configs/vscode/settings.json && commitconfig"
+alias syncZshrc="cp ~/.zshrc $DEV/configs/~/zshrc.txt && commitconfig"
 # utils
 alias copy='pbcopy'
 alias shutdown='sudo shutdown -h'
@@ -13,39 +16,32 @@ alias port='lsof -i tcp:$1'
 alias copyzshrc='cat ~/.zshrc | copy'
 alias yt='echo "document.getElementsByClassName(\"video-stream html5-main-video\")[0].playbackRate = 3" | copy'
 alias danger="open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir=\"/tmp/chrome_dev_test\" --disable-web-security http://homepage.tndev.aws.gartner.com/home localhost:3000 && tnemail"
+alias chrome="open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args && tnemail"
 
 # TN
 alias copytnurl='echo http://homepage.tndev.aws.gartner.com/home | copy'
 alias tnemail='echo "tejinder.singh@talentneuron.com" | copy'
-alias tn='cd /Users/tejindersingh/talentNeuron'
-alias cc='cd /Users/tejindersingh/talentNeuron/components-library'
-alias tnr='cd /Users/tejindersingh/talentNeuron/gemini/memberweb/react'
-alias tnp='/Users/tejindersingh/talentNeuron/talentneuron-plan2.x---platform/sourcecode/tnp.web/web.client'
+alias tn='cd '$TN
+alias cc='cd $TN/components-library'
+alias tnr='cd $TN/gemini'
+alias tnr-ui='cd $TN/gemini/memberweb/react'
+alias tnp='cd $TN/talentneuron-plan2.x---platform'
+alias tnp-ui='cd $TN/talentneuron-plan2.x---platform/sourcecode/tnp.web/web.client'
+alias removecc='rm -rf node_modules/tn-components-library'
+alias installcc='rm -rf node_modules/tn-components-library && cd $TN/components-library && npm run build && npm i $TN/components-library/'
 
 # dev
-alias runcc="cd /Users/tejindersingh/talentNeuron/components-library && code . && npm run storybook && danger"
+alias runcc="cd $TN/components-library && code . && npm run storybook && danger"
 alias runtnr='cd 
-/Users/tejindersingh/talentNeuron/gemini/memberweb/react/web.client/ && 
+$TN/gemini/memberweb/react/web.client/ && 
 code . && npm start && danger'
-alias opentnr='code /Users/tejindersingh/talentNeuron//gemini/memberweb/react/web.client/'
-alias runtnp='cd 
-/Users/tejindersingh/talentNeuron/talentneuron-plan2.x---platform/sourcecode/tnp.web/web.client 
-&& code . && npm start && danger'
-alias opentnp='code /Users/tejindersingh/talentNeuron/talentneuron-plan2.x---platform/sourcecode/tnp.web/web.client'
-alias removecc='rm -rf yarn.lock package-lock.json 
-node_modules/tn-components-library && ni'
-alias installcc='cd /Users/tejindersingh/talentNeuron/components-library 
-&& npm run build && rm -rf 
-/Users/tejindersingh/talentNeuron/gemini/memberweb/react/web.client/package-lock.json 
-B/Users/tejindersingh/talentNeuron/gemini/memberweb/react/web.client/yarn.lock 
-/Users/tejindersingh/talentNeuron/gemini/memberweb/react/web.client/node_modules/tn-components-library/build 
-&& cp ./ build 
-/Users/tejindersingh/talentNeuron/gemini/memberweb/react/web.client/node_modules/tn-components-library/'
+alias opentnr='code $TN//gemini/memberweb/react/web.client/'
+alias runtnp='cd $TN/talentneuron-plan2.x---platform/sourcecode/tnp.web/web.client && code . && npm start && danger'
+alias opentnp='code $TN/talentneuron-plan2.x---platform/sourcecode/tnp.web/web.client'
+alias removeccc='rm -rf yarn.lock package-lock.json node_modules/tn-components-library && ni'
+
 alias generatefont='npm run generate-font && npm run build'
-alias cci='rm -rf yarn.lock package-lock.json 
-node_modules/tn-components-library/build/ && cp -r 
-/home/tejindersingh/components-library/build 
-node_modules/tn-components-library/build/'
+
 
 # git
 alias gc='git checkout'
@@ -166,3 +162,9 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
+
+
+ export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+  
