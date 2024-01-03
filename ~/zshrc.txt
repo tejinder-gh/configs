@@ -1,5 +1,7 @@
 export DEV=/Users/tejindersingh/Developer
 export TN=$DEV/TN
+export PATH="/opt/homebrew/opt/node@14/bin:$PATH"
+
 
 alias zshrc='code ~/.zshrc'
 
@@ -15,7 +17,7 @@ alias shutdown='sudo shutdown -h'
 alias port='lsof -i tcp:$1'
 alias copyzshrc='cat ~/.zshrc | copy'
 alias yt='echo "document.getElementsByClassName(\"video-stream html5-main-video\")[0].playbackRate = 3" | copy'
-alias danger="open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir=\"/tmp/chrome_dev_test\" --disable-web-security http://homepage.tndev.aws.gartner.com/home localhost:3000 && tnemail"
+alias danger="open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir=\"/tmp/chrome_dev_test\" --disable-web-security https://recruit.tndev.aws.talentneuron.com localhost:3000 && tnemail"
 alias chrome="open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args && tnemail"
 
 # TN
@@ -29,6 +31,7 @@ alias tnp='cd $TN/talentneuron-plan2.x---platform'
 alias tnp-ui='cd $TN/talentneuron-plan2.x---platform/sourcecode/tnp.web/web.client'
 alias removecc='rm -rf node_modules/tn-components-library'
 alias installcc='rm -rf node_modules/tn-components-library && cd $TN/components-library && npm run build && npm i $TN/components-library/'
+alias addkey='/usr/bin/ssh-add --apple-use-keychain ~/.ssh/TN/ed25519'
 
 # dev
 alias runcc="cd $TN/components-library && code . && npm run storybook && danger"
@@ -44,6 +47,7 @@ alias generatefont='npm run generate-font && npm run build'
 
 
 # git
+alias cl='git clone'
 alias gc='git checkout'
 alias gac='git add . && git commit -m'
 alias gl='git log --graph --decorate --oneline'
@@ -55,11 +59,9 @@ alias ni='npm install --prefer-offline --no-audit --progress=false'
 alias yi='yarn install'
 
 
-
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
 
 # If you come from bash you might have to change your $PATH.
@@ -138,6 +140,7 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -149,7 +152,7 @@ source $ZSH/oh-my-zsh.sh
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-  export EDITOR='vscode'
+  # export EDITOR='vscode'
 # fi
 
 # Compilation flags
@@ -164,7 +167,4 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 
 
- export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
-  
+ 
