@@ -9,19 +9,20 @@ alias zshrc='code ~/.zshrc'
 alias notes="code $DEV/configs/notes/notes.txt"
 alias commitconfig="cd $DEV/configs && git add . && git commit -m \"commit\" && git push"
 alias setupconfig="cd $DEV && git clone git@github.com:tejinder-pal-singh/configs.git"
-alias updateconfig="cp ~/.zshrc $DEV/configs/~/zshrc.txt && cp $DEV/Library/Application\ Support/Code/User/settings.json $DEV/configs/vscode/settings.json && commitconfig"
+alias updateconfig="cp ~/.zshrc $DEV/configs/~/zshrc.txt && cp $DEV/Library/Application/Support/Code/User/settings.json $DEV/configs/vscode/settings.json && commitconfig"
 alias syncZshrc="cp ~/.zshrc $DEV/configs/~/zshrc.txt && commitconfig"
+
 # utils
 alias copy='pbcopy'
 alias shutdown='sudo shutdown -h'
 alias port='lsof -i tcp:$1'
 alias copyzshrc='cat ~/.zshrc | copy'
 alias yt='echo "document.getElementsByClassName(\"video-stream html5-main-video\")[0].playbackRate = 3" | copy'
-alias danger="open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir=\"/tmp/chrome_dev_test\" --disable-web-security https://recruit.tndev.aws.talentneuron.com localhost:3000 && tnemail"
+alias danger="open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir=\"/tmp/chrome_dev_test\" --disable-web-security http://home.tndev.aws.talentneuron.com/home localhost:3000 && tnemail"
 alias chrome="open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args && tnemail"
 
 # TN
-alias copytnurl='echo http://homepage.tndev.aws.gartner.com/home | copy'
+alias tnurl='echo http://homepage.tndev.aws.gartner.com/home | copy'
 alias tnemail='echo "tejinder.singh@talentneuron.com" | copy'
 alias tn='cd '$TN
 alias cc='cd $TN/components-library'
@@ -31,6 +32,7 @@ alias tnp='cd $TN/talentneuron-plan2.x---platform'
 alias tnp-ui='cd $TN/talentneuron-plan2.x---platform/sourcecode/tnp.web/web.client'
 alias removecc='rm -rf node_modules/tn-components-library'
 alias installcc='rm -rf node_modules/tn-components-library && cd $TN/components-library && npm run build && npm i $TN/components-library/'
+
 alias addkey='/usr/bin/ssh-add --apple-use-keychain ~/.ssh/TN/ed25519'
 
 # dev
@@ -44,7 +46,6 @@ alias opentnp='code $TN/talentneuron-plan2.x---platform/sourcecode/tnp.web/web.c
 alias removeccc='rm -rf yarn.lock package-lock.json node_modules/tn-components-library && ni'
 
 alias generatefont='npm run generate-font && npm run build'
-
 
 # git
 alias cl='git clone'
@@ -168,3 +169,7 @@ source $ZSH/oh-my-zsh.sh
 
 
  
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
