@@ -228,6 +228,7 @@ alias dsstore='find . -name .DS_Store -print0 | xargs -0 git rm -f --ignore-unma
 alias freshinstall='rm -rf package-lock.json node_modules && npm i'
 alias ni='npm install --prefer-offline --no-audit --progress=false'
 alias yi='yarn install'
+alias lintFix='npx eslint src/ --fix'
 
 
 
