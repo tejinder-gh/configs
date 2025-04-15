@@ -1,0 +1,681 @@
+# Zsh Configuration File (~/.zshrc)
+# -----------------------------------------------------------------------------
+# This file contains the configuration for the Zsh shell.  It customizes the
+# shell's behavior, appearance, and functionality.
+
+# Performance & Core Setup
+# -----------------------------------------------------------------------------
+# These settings affect Zsh's core behavior and performance.
+
+skip_global_compinit=1
+# Skips the global compinit call.  This can speed up Zsh startup time,
+# especially if compinit has already been run or is being handled later.
+# compinit is the Zsh completion initialization function.
+
+DISABLE_AUTO_UPDATE=true
+# Disables automatic updates for Oh My Zsh.  This prevents unexpected
+# changes to your Zsh configuration.  Set to "true" to disable.
+
+# Load Powerlevel10k Instant Prompt (if available)
+# -----------------------------------------------------------------------------
+# Powerlevel10k can use an instant prompt to significantly improve
+# startup time.  This checks for and loads the instant prompt cache if it exists.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+# -r:  Checks if the file exists and is readable.
+# ${XDG_CACHE_HOME:-$HOME/.cache}:  Uses the XDG_CACHE_HOME environment variable
+#                                 if it's set, otherwise defaults to $HOME/.cache.
+# ${(%):-%n}:  Zsh parameter expansion to get the current host name.
+
+# Oh My Zsh & Theme Configuration
+# -----------------------------------------------------------------------------
+# These settings configure Oh My Zsh, a popular Zsh framework, and set the theme.
+
+export ZSH="$HOME/.oh-my-zsh"
+# Sets the ZSH environment variable to the location of the Oh My Zsh
+# installation.  This is used by Oh My Zsh to locate its files.
+
+ZSH_THEME="powerlevel10k/powerlevel10k"
+# Sets the Zsh theme.  Powerlevel10k is a highly customizable and
+# performant theme.
+
+ENABLE_CORRECTION="true"
+# Enables spelling correction for commands.  Zsh will suggest
+# corrections for misspelled commands before execution.
+
+COMPLETION_WAITING_DOTS="true"
+# Displays dots while Zsh is waiting for completion suggestions.
+# This provides visual feedback that Zsh is working on the completion.
+
+# Powerlevel10k Prompt Configuration
+# -----------------------------------------------------------------------------
+# These settings configure the appearance and behavior of the Powerlevel10k prompt.
+
+POWERLEVEL9K_INSTANT_PROMPT=quiet
+# Sets the instant prompt mode.  "quiet" mode provides a good balance
+# between speed and features.
+
+POWERLEVEL9K_DISABLE_HOT_RELOAD=true
+# Disables Powerlevel10k's hot-reload feature.  This can improve
+# performance, especially if you don't frequently change your prompt config.
+
+POWERLEVEL9K_COLOR_SCHEME="dark"
+# Sets the color scheme for the prompt.  "dark" is a common choice.
+
+# Prompt Segments - Left Side
+# -----------------------------
+# Defines the elements that appear on the left side of the prompt.
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
+  os_icon       # Displays the operating system icon.
+  dir           # Displays the current directory.
+  vcs           # Displays version control system (e.g., Git) status.
+  node_version  # Displays the current Node.js version.
+  prompt_char   # Displays the prompt character (e.g., $, #).
+)
+
+# Prompt Segments - Right Side
+# ------------------------------
+# Defines the elements that appear on the right side of the prompt.
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
+  status                # Displays the exit status of the last command.
+  command_execution_time  # Displays the execution time of the last command.
+  background_jobs         # Displays the number of background jobs.
+  time                  # Displays the current time.
+)
+
+# Directory Settings (Powerlevel10k)
+# -----------------------------------------------------------------------------
+# These settings control how directories are displayed in the prompt.
+
+POWERLEVEL9K_DIR_MAX_LENGTH=3
+# Sets the maximum number of directory levels to display in the prompt.
+# For example, if set to 3, "/home/user/documents/project" might be shortened.
+
+POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_last
+# Sets the strategy for shortening directory paths.
+# "truncate_to_last" keeps the last directory name and shortens the rest.
+
+POWERLEVEL9K_DIR_FOREGROUND=4
+POWERLEVEL9K_DIR_SHORTENED_FOREGROUND=4
+POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=4
+
+# Git Settings (Powerlevel10k)
+# -----------------------------------------------------------------------------
+# These settings control how Git information is displayed in the prompt.
+
+POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes git-untracked git-aheadbehind git-stash git-remotebranch git-tagname)
+#  vcs-detect-changes: detect changes
+#  git-untracked: show untracked files
+#  git-aheadbehind: show how many commits ahead or behind
+#  git-stash: show stash
+#  git-remotebranch: show remote branch
+#  git-tagname: show tag name
+POWERLEVEL9K_VCS_CLEAN_FOREGROUND=2
+# Sets the foreground color for a clean Git repository.
+POWERLEVEL9K_VCS_MODIFIED_FOREGROUND=3
+# Sets the foreground color for a modified Git repository.
+POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND=2
+# Sets the foreground color for a Git repository with untracked files.
+POWERLEVEL9K_VCS_CONFLICTED_FOREGROUND=3
+# Sets the foreground color for a Git repository with conflicts.
+POWERLEVEL9K_VCS_LOADING_FOREGROUND=8
+# Sets the foreground color for when Git information is being loaded.
+
+# Status and Timing (Powerlevel10k)
+# -----------------------------------------------------------------------------
+# These settings control the colors for status and timing information in the prompt.
+
+POWERLEVEL9K_STATUS_OK_FOREGROUND=2
+# Sets the foreground color for a successful command exit status.
+POWERLEVEL9K_STATUS_ERROR_FOREGROUND=1
+# Sets the foreground color for an error command exit status.
+POWERLEVEL9K_TIME_FOREGROUND=6
+# Sets the foreground color for the displayed time.
+POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=3
+# Sets the foreground color for the command execution time.
+POWERLEVEL9K_NODE_VERSION_FOREGROUND=2
+# Sets the foreground color for the displayed Node.js version.
+
+# History Configuration
+# ----------------------
+# These settings control Zsh's command history behavior.
+
+HISTSIZE=10000
+# Sets the maximum number of commands to remember in the history list.
+SAVEHIST=10000
+# Sets the maximum number of commands to save to the history file.
+HISTFILE=~/.cache/zsh/history
+# Sets the location of the history file.  Storing it in the cache
+# directory is a common practice.
+
+# History Options
+# ---------------
+# These options modify how Zsh handles command history.
+setopt SHARE_HISTORY         # Share history between Zsh sessions.  Commands entered
+                            # in one session are available in others.
+setopt HIST_IGNORE_SPACE     # Don't record commands that begin with a space.
+                            # This is useful for preventing sensitive commands
+                            # from being saved.
+setopt EXTENDED_HISTORY      # Enable extended history features, such as timestamps
+                            # and command duration.
+setopt HIST_EXPIRE_DUPS_FIRST # Expire duplicate entries before expiring older ones.
+setopt HIST_IGNORE_DUPS      # Don't record duplicate commands.
+setopt HIST_SAVE_NO_DUPS     # Don't save duplicate commands to the history file.
+setopt INC_APPEND_HISTORY    # Append commands to the history file as soon as they
+                            # are entered, rather than waiting until the session ends.
+
+# Directory Navigation
+# --------------------
+# These options modify how Zsh handles directory navigation.
+
+setopt AUTO_CD           # Automatically change directory by typing the directory name.
+setopt AUTO_PUSHD        # Push the old directory onto the directory stack when
+                            # changing directories.  This allows you to use "cd -"
+                            # to go back to the previous directory.
+setopt PUSHD_IGNORE_DUPS   # Don't push duplicate directories onto the stack.
+setopt PUSHD_MINUS         #  Use cd -<n> to navigate the stack
+
+# Completion System
+# ------------------
+# These settings initialize and configure Zsh's completion system,
+# which provides tab completion for commands, options, and arguments.
+
+autoload -U compinit colors # Load the compinit (completion initialization)
+                            # function and the colors function.  -U makes the
+                            # function autoload.
+colors                    # Initialize colors for use in completion and the prompt.
+zstyle ":completion:*" menu select #  Enable interactive selection from the
+                                  # completion menu.
+zmodload zsh/complist       # Load the zsh/complist module, which provides
+                            # additional completion functionality.
+compinit                  # Initialize the completion system.
+_comp_options+=(globdots)    # Include hidden files in completion lists.
+
+# Environment Variables
+# ----------------------
+# These variables set up the environment for Zsh and other programs.
+
+export DEV="/opt/Developer/"
+# Sets the DEV environment variable to the /opt/Developer/ directory.
+# This might be used for storing development-related files.
+export practice="/opt/Developer/Study/Practice/js"
+# Sets the practice env variable
+hash -d dev="/opt/Developer/"
+# Creates a Zsh hash table entry, making "~dev" a shortcut to
+# /opt/Developer/.  This is a Zsh-specific feature.
+export EDITOR="cursor"
+
+export jsRT="bun"
+# Sets the EDITOR environment variable to "cursor".  This specifies the
+# default text editor used by various commands.
+export KEYTIMEOUT=1
+# Sets the KEYTIMEOUT environment variable to 1.  This controls the
+# delay (in tenths of a second) that Zsh waits for a key sequence
+# to complete.  A shorter delay can make Zsh feel more responsive.
+export AUTO_NOTIFY_THRESHOLD=20
+#  Sets the time threshold
+export PYENV_ROOT="$HOME/.pyenv"
+# Sets the PYENV_ROOT environment variable, which specifies the
+# location of the Pyenv installation.
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+# Adds the Visual Studio Code binary directory to the PATH environment
+# variable.  This allows you to run "code" from the command line to
+# open VS Code.
+export PATH="$HOME/scripts:$PATH"
+# Adds the user's "scripts" directory to the PATH environment variable.
+# This allows you to run scripts in that directory from the command line.
+
+# Path Configuration
+# ------------------
+# This section configures the PATH environment variable, which tells the
+# shell where to find executable programs.
+path=(
+  /opt/homebrew/opt/node@18/bin         # Node.js 18 binaries (Homebrew)
+  /opt/homebrew/opt/icu4c/{bin,sbin}    # ICU4C binaries (Homebrew)
+  "$HOME/.local/bin"                   # User-specific binaries
+  "$HOME/.pyenv/bin"                   # Pyenv binaries
+  /opt/homebrew/bin                     # Homebrew binaries
+  $path                                # Add the existing PATH to the end (important
+                                        #  for including system-wide executables)
+)
+#  Zsh automatically updates the PATH variable
+#  when the path array is modified.
+# export PATH
+# Export the modified PATH variable.  While often necessary in other shells,
+# this is usually redundant in Zsh, as Zsh tends to keep the path array
+# and PATH variable in sync.
+
+# Plugin Configuration
+# --------------------
+# This section configures Oh My Zsh plugins, which extend Zsh's functionality.
+plugins=(
+  git                       # Provides Git integration.
+  auto-notify               # Enables automatic notifications for long-running commands.
+  zsh-autosuggestions       # Suggests commands as you type, based on history.
+  zsh-history-substring-search # Enables searching history by substring.
+  web-search                # Provides aliases for performing web searches.
+  zsh-syntax-highlighting   # Highlights syntax in the command line.
+)
+source "$ZSH/oh-my-zsh.sh" # Loads Oh My Zsh and the specified plugins.
+
+# Development Tools
+# -----------------
+# This section configures development-related tools.
+
+eval "$(pyenv init -)"
+# Initializes Pyenv, the Python version management tool.  The output of
+# "pyenv init -" is evaluated to set up the necessary environment
+# variables and shell functions.
+
+# NVM Configuration
+# -----------------
+# This section configures NVM, the Node.js version management tool.
+
+export NVM_DIR="$HOME/.nvm" # Sets the NVM installation directory.
+
+# Load NVM if it exists
+if command -v nvm >/dev/null; then
+  source "$(command -v nvm)"
+  [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion" # For bash comp
+  [ -s "$NVM_DIR/zsh/completion/zsh_completion" ] && source "$NVM_DIR/zsh/completion/zsh_completion" # zsh
+fi
+
+# Key Bindings
+# ------------
+# These settings configure custom key bindings in Zsh.
+
+bindkey "^e" edit-command-line
+# Binds Ctrl+E to the "edit-command-line" widget, which moves the cursor
+# to the end of the line.
+bindkey "^[[A" history-substring-search-up
+# Binds the Up arrow key to the "history-substring-search-up" widget,
+# which searches the command history for entries matching the current
+# input.
+bindkey "^[[B" history-substring-search-down
+# Binds the Down arrow key to the "history-substring-search-down" widget.
+bindkey -s "^o" "lfcd\n"
+# Binds Ctrl+O to execute the "lfcd" function followed by a newline
+# character.
+
+# Utility Functions
+# -----------------
+# These are custom shell functions that extend Zsh's functionality.
+
+# Function: lfcd (Longest File/Directory Change Directory)
+# ------------------------------------------------------
+# Changes to the longest matching directory
+# Arguments:
+#   $1: The directory name or pattern to change to.
+lfcd() {
+  tmp="$(mktemp)" # Create a temporary file using mktemp.
+  # cd to the last directory, and store in the temp file
+  cd -last-dir-path="$tmp" "$@"
+  if [ -f "$tmp" ]; then
+    dir="$(cat "$tmp")" # Read the directory path from the temp file.
+    rm -f "$tmp"         # Remove the temporary file.
+    # If the directory exists and is different from the current directory
+    [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+  fi
+}
+
+# Function: extract (Extract Archive)
+# ------------------------------------
+# Extracts various archive types.
+# Arguments:
+#   $1: The archive file to extract.
+extract() {
+  if [ -f "$1" ]; then # Check if the file exists.
+    case "$1" in
+      *.tar.bz2) tar xjf "$1" ;; # Extract .tar.bz2 archive (bzip2 compression)
+      # x: extract
+      # j: decompress with bzip2
+      # f: use file
+      *.tar.gz)  tar xzf "$1" ;; # Extract .tar.gz archive (gzip compression)
+      # z: decompress with gzip
+      *.bz2)     bunzip2 "$1" ;;    # Extract .bz2
+      *.rar)     unrar x "$1" ;;    # Extract .rar archive
+      # x:  extract with full paths
+      *.gz)      gunzip "$1" ;;     # Extract .gz
+      *.tar)     tar xf "$1" ;;     # Extract .tar archive
+      *.tbz2)    tar xjf "$1" ;; # Extract .tbz2
+      *.tgz)     tar xzf "$1" ;; # Extract .tgz
+      *.zip)     unzip "$1" ;;      # Extract .zip archive
+      *.Z)       uncompress "$1" ;;  # Extract .Z archive
+      *.7z)      7z x "$1" ;;       # Extract .7z archive
+      *)         echo "'$1' cannot be extracted" ;; # Unknown format
+    esac
+  else
+    echo "'$1' is not a valid file" # File doesn't exist
+  fi
+}
+
+# Function: mkcd (Make Directory and Change Directory)
+# ------------------------------------------------------
+# Creates a directory and changes into it.
+# Arguments:
+#   $1: The name of the directory to create and change into.
+mkcd() { mkdir -p "$1" && cd "$1"; }
+#  -p :  create intermediate directories as needed
+
+# Function: killport (Kill Process on Port)
+# ------------------------------------------
+# Kills the process listening on the specified TCP port.
+# Arguments:
+#   $1: The TCP port number.
+killport() {
+  lsof -i tcp:"$1" | # List processes using the specified TCP port.
+  # -i :  internet address
+  #  tcp:<port>
+  awk "NR!=1 {print $2}" | # Print the process ID (PID) from the output, skipping the header.
+  # NR!=1 :  skips the first row
+  # {print $2} : prints second column
+  xargs kill -9;       # Kill the process using the PID.
+  #  -9:   kill signal
+}
+
+# Function: copy (Copy to Clipboard)
+# ----------------------------------
+# Copies the output of a command to the clipboard (macOS specific).
+# Arguments:
+#   $@:  The command
+copy() { pbcopy <(pbpaste | eval "$@"); }
+# pbcopy:  Copies to the pasteboard
+# pbpaste:  pastes from the pasteboard
+# eval:  executes the command
+
+# Function: gitclean (Clean up Git branches)
+gitclean() {
+  git checkout main
+  git pull
+  git fetch -p
+  git branch -vv | grep ": gone]" | awk "{print $1}" | xargs git branch -D
+}
+
+# Enhanced Git Functions
+# ----------------------
+# These functions provide enhanced Git-related functionality.
+
+# Function: gitinfo (Show Git Repository Information)
+# ------------------------------------------------------
+# Displays the remote URL, current branch, and last commit message.
+gitinfo() {
+  echo "Remote URL: $(git config --get remote.origin.url)"
+  # git config --get remote.origin.url:  Gets the URL of the remote
+  #                                     repository named "origin".
+  echo "Current Branch: $(git rev-parse --abbrev-ref HEAD)"
+  # git rev-parse --abbrev-ref HEAD:  Gets the name of the current branch.
+  #                                  --abbrev-ref:  abbreviate the ref name
+  #                                  HEAD:  refers to the current commit
+  echo "Last Commit: $(git log -1 --pretty=%B)"
+  # git log -1 --pretty=%B:  Gets the message of the last commit.
+  #         -1:  Only show the last commit
+  #    --pretty=%B:  format
+}
+
+# Node.js Development Helpers
+# ---------------------------
+# These functions provide helpers for Node.js development.
+
+# Function: node_check (Check Node.js Environment)
+# ------------------------------------------------------
+# Displays Node.js, NPM, and Yarn versions, and checks dependencies.
+node_check() {
+  echo "📦 Package versions:"
+  echo "  Node: $(node -v)" #  node -v : prints node version
+  echo "  NPM: $(npm -v)"  # npm -v:  prints npm version
+  echo "  Yarn: $(yarn -v 2>/dev/null || echo 'not installed')"
+  # yarn -v: prints yarn version
+  # 2>/dev/null:  redirects standard error to null
+  # || echo 'not installed':  if yarn -v fails, prints not installed
+  echo "\n📋 Dependencies check:"
+  npm ls --depth=0 # Lists the installed npm packages
+  # --depth=0 :  show only the top level
+  echo "\n🔍 Outdated packages:"
+  npm outdated    #  shows outdated packages
+}
+
+# Quick Project Stats
+# ------------------
+# These functions provide quick statistics about the current project.
+
+# Function: project_stats (Display Project Statistics)
+# ------------------------------------------------------
+# Displays the number of files, lines of code, last commit, and contributors.
+project_stats() {
+  echo "📊 Project statistics:"
+  echo "  Files: $(find . -type f -not -path "node_modules" -not -path ".git" | wc -l)"
+  # find . -type f:  find all files
+  # -not -path "node_modules" -not -path ".git":  exclude node_modules and .git
+  # wc -l:  word count lines
+  echo "  Lines of code: $(find . -type f -name "*.js" -o -name "*.jsx" -o -name "*.ts" -o -name "*.tsx" -not -path "node_modules" -not -path ".git" | xargs cat | wc -l)"
+  # find all js, jsx, ts, tsx files, excluding node_modules and .git
+  # xargs cat:  pass the files
+  # wc -l:  count the lines
+  echo "  Last commit: $(git log -1 --pretty=%B)"
+  echo "  Contributors: $(git shortlog -sn --no-merges | wc -l)"
+  # git shortlog -sn --no-merges:  show contributors, sorted by number of commits
+  # -s:  suppress the output
+  # -n:  sort by number
+  # --no-merges:  skip merge commits
+}
+
+# Docker Helpers
+# --------------
+# These functions provide helpers for working with Docker.
+
+# Function: dc_cleanup (Clean up Docker Resources)
+# ------------------------------------------------------
+# Cleans up unused Docker resources (containers, images, volumes, networks).
+dc_cleanup() {
+  echo "🧹 Cleaning up Docker resources..."
+  docker system prune -f   # Remove unused containers, images, and networks.
+  # -f : force
+  docker volume prune -f   # Remove unused volumes.
+}
+
+# Function: dc_stats (Display Docker Statistics)
+# ------------------------------------------------------
+# Displays the number of containers, images, volumes, and networks.
+dc_stats() {
+  echo "🐳 Docker statistics:"
+  echo "  Containers: $(docker ps -a | wc -l)" #  docker ps -a : list all containers
+  echo "  Images: $(docker images | wc -l)"    # docker images: list images
+  echo "  Volumes: $(docker volume ls | wc -l)"  # docker volume ls: list volumes
+  echo "  Networks: $(docker network ls | wc -l)" # docker network ls: list networks
+}
+
+# Function: backup_dir (Backup Directory)
+# ------------------------------------------------------
+# Backs up a directory using rsync.
+# Arguments:
+#   $1: The directory to back up.
+#   $2: The destination directory (optional, defaults to ./backup-YYYY-MM-DD).
+backup_dir() {
+  local dest="${2:-./backup-$(date +%F)}" # Default destination directory.
+  #  ${2:-./backup-$(date +%F)}:  if $2 is not set, use ./backup-YYYY-MM-DD
+  rsync -av --progress "$1" "$dest"         # Use rsync to backup.
+  # -a : archive
+  # -v : verbose
+  # --progress
+}
+
+# Monitor System Performance
+# --------------------------
+# These functions provide tools for monitoring system performance.
+
+# Function: system_stats (Display System Information)
+# ------------------------------------------------------
+# Displays CPU, memory, disk space, and current load.
+system_stats() {
+  echo "💻 System Information:"
+  echo "  CPU: $(sysctl -n machdep.cpu.brand_string)"
+  # sysctl -n machdep.cpu.brand_string:  gets the cpu name
+  echo "  Memory: $(vm_stat | grep "Pages free:" | awk '{print $3}' | sed 's/.//' | awk '{print $1/256 " MB"}') free"
+  # vm_stat:  virtual memory statistics
+  # grep "Pages free:": gets the line with free pages
+  # awk '{print $3}': gets the third column
+  # sed 's/.//': removes the first character
+  # awk '{print $1/256 " MB"}': converts to MB
+  echo "  Disk space: $(df -h / | awk 'NR==2 {print $4}') available"
+  # df -h /:  disk space for root
+  # awk 'NR==2 {print $4}': gets the fourth column
+  echo "\n🔄 Current load:"
+  top -l 1 | grep -E "^CPU|^Phys"
+  # top -l 1:  show top processes
+  # grep -E "^CPU|^Phys":  filter
+}
+
+# Profile Zsh Startup Time
+# -----------------------
+# This function measures and displays the time it takes for Zsh to start.
+
+# Function: zsh_profile (Profile Zsh Startup Time)
+# ------------------------------------------------------
+# Measures and displays the time it takes for Zsh to start.
+zsh_profile() {
+  local start=$(($(date +%s%N)/1000000)) # Get start time in milliseconds.
+  # date +%s%N:  seconds and nanoseconds
+  # /1000000: convert to ms
+  /usr/bin/time zsh -i -c exit          # Run Zsh and exit immediately, time it.
+  # /usr/bin/time:  The time command
+  # zsh -i -c exit:  run zsh interactively, execute exit, and then exit
+  local end=$(($(date +%s%N)/1000000))    # Get end time in milliseconds.
+  echo "Startup time: $((end-start)) ms" # Calculate and display the difference.
+}
+
+# Aliases
+# -------
+# These are custom shortcuts for frequently used commands.
+
+# System Utilities
+alias shutdown="sudo shutdown -h now" # Shutdown the system
+# sudo shutdown -h now:  shuts down
+# sudo:  run as superuser
+# shutdown: shutdown command
+# -h:  halt
+# now
+alias restart="sudo shutdown -r now"  # Restart the system
+# -r:  reboot
+alias port="lsof -i tcp:"           # List processes using a port
+# lsof -i tcp:<port>
+alias wifiPass="security find-generic-password -wa" # Get Wi-Fi password from keychain
+# security find-generic-password -wa
+alias space="df -h"                # Show disk space usage
+# df -h
+alias myip="ifconfig en0 | grep inet"     # Show public IP address
+# ifconfig en0:  show network config for en0
+# grep inet:  filter
+alias localip="ipconfig getifaddr en0"  # show local ip
+#ipconfig getifaddr en0
+alias processes="ps -ax"             # List all processes
+# ps -ax
+alias serve8000="python3 -m http.server" # Start a simple HTTP server on port 8000
+# python3 -m http.server
+alias openFinder="open -a Finder ./"    # Open current directory in Finder
+# open -a Finder
+alias listen="lsof -P -i -n"          # List listening ports
+# lsof -P -i -n
+alias cpu="top -o cpu"                # show processes using most cpu
+# top -o cpu
+alias mem="top -o rsize"              # show processes using most memory
+# top -o rsize
+alias diskspace="df -P -kHl"
+alias weather="curl wttr.in"
+
+# Config Management
+alias zshrc="$EDITOR ~/.zshrc"       # Edit Zsh configuration file
+# $EDITOR ~/.zshrc
+alias notes="$EDITOR $DEV/configs/notes/notes.txt" # Edit notes file
+# $EDITOR
+alias commitconfig="cd $DEV/configs && git add . && git commit -m 'Updating config' && git push" # Commit config changes
+#  && : and
+alias setupconfig="cd $DEV && git clone git@github.com:tejinder-pal-singh/configs.git" # Clone config repo
+# git clone
+alias updateconfig="cp ~/.zshrc $DEV/configs//zshrc.txt && cp $DEV/Library/Application\ Support/Code/User/settings.json $DEV/configs/vscode/settings.json && commitconfig"
+alias syncZshrc="cp ~/.zshrc $DEV/configs//zshrc.txt && commitconfig"
+
+# Development
+alias dc="docker-compose"         # Docker Compose
+alias dps="docker ps"             # Docker process status
+alias dex="docker exec -it"      # Docker execute interactive
+alias cl="git clone"             # Git clone
+alias gc="git checkout"          # Git checkout
+alias gcm="git checkout main"     # Git checkout main
+alias gac="git add . && git commit -m" # Git add and commit
+alias gl="git log --graph --decorate --oneline" # Git log (graphical)
+alias gst="git status -sb"         # Git status (short and branch)
+alias dsstore="find . -name .DS_Store -print0 | xargs -0 git rm -f --ignore-unmatch" # Remove .DS_Store files from Git
+alias nr="npm run"               # npm run
+alias freshinstall="rm -rf package-lock.json node_modules && npm i"
+alias ni="npm install --prefer-offline --no-audit --progress=false"
+alias yi="yarn install"
+alias lintFix="npx eslint src/ --fix"
+
+# Chrome Management
+alias danger="$HOME/tejindersingh/danger.sh dev_profile http://localhost:3000 http://home.tndev.aws.talentneuron.com/home && tnemail"
+alias rsyncChromeProfile="rsync -a --exclude='*.lock' $HOME/Library/Application\ Support/Google/Chrome/Default/ $HOME/chrome_profiles/dev_test/"
+alias chrome="open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args && tnemail"
+alias yt="echo 'document.getElementsByClassName("video-stream html5-main-video")[0].playbackRate = 3' | copy"
+
+# Profile specific
+email_stps="s.tejinderpalsingh@gmail.com"
+email_devst="dev.singhtejinder@gmail.com"
+email_mra="mr.aashat@gmail.com"
+ph="4379734379"
+alias e_s="echo $email_stps | copy"
+alias e_d="echo $email_devst | copy"
+alias e_m="echo $email_mra | copy"
+alias ph="echo $ph | copy"
+alias addkey="/usr/bin/ssh-add --apple-use-keychain ~/.ssh/TN/ed25519"
+
+# AI Tools
+alias llama3="ollama run llama3.2"
+alias qwen="ollama run qwen2.5-coder:32b"
+alias aiui="docker run -d -p 8080:8080 -v open-webui:/app/backend/data -e OLLAMA_BASE_URL=http://host.docker.internal:11434 --name open-webui --restart always ghcr.io/open-webui/open-webui:main"
+
+# Productivity aliases
+alias lss='exa --icons'
+alias ll='exa -la --icons'
+alias catt='bat'
+alias findd='fd'
+alias grepp='rg'
+alias js="$EDITOR $practice && $jsRT run dev"
+
+# Rosetta detection and optimization
+# ----------------------------------
+if [[ $(sysctl -n machdep.cpu.brand_string) =~ "Apple" ]]; then
+  # Apple Silicon specific optimizations
+  export ARCHFLAGS="-arch arm64"
+  alias ibrew="arch -x86_64 /usr/local/bin/brew" # Intel brew
+  # arch -x86_64:  run the command for x86_64
+  alias abrew="arch -arm64 /opt/homebrew/bin/brew" # Apple Silicon brew
+  # arch -arm64: run the command for arm64
+fi
+
+# Homebrew path optimization
+# --------------------------
+eval "$(/opt/homebrew/bin/brew shellenv)" #eval is unsafe, but commonly used in shell scripts.
+#  $(/opt/homebrew/bin/brew shellenv):  runs brew shellenv and captures the output
+#  eval:  executes the output
+
+# Load configurations and plugins
+# -------------------------------
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh # Load Powerlevel10k config if it exists.
+# [[ ! -f ~/.p10k.zsh ]] : if the file does not exist
+# || : or
+# source :  execute
+
+# Amazon Q post block. Keep at the bottom of this file.
+# ----------------------------------------------------
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
+
+# bun completions
+[ -s "/Users/admin/.bun/_bun" ] && source "/Users/admin/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/admin/.lmstudio/bin"
