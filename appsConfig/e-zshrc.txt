@@ -1,0 +1,458 @@
+
+#!/bin/zsh
+# =============================================================================
+# Enhanced .zshrc Configuration for WSL2 Development
+# Optimized for: Web Development, AI/ML, Data Science, MCP & A2A Integration
+# =============================================================================
+
+# zmodload zsh/zprof
+
+# -----------------------------------------------------------------------------
+# Environment Variables & Path Configuration
+# -----------------------------------------------------------------------------
+export EDITOR="code"
+export DEV="/home/tej/Development"
+export CERTS="$DEV/certs"
+export PROJECTS="$DEV/projects"
+export BF="$PROJECTS/bonfire"
+export AWS_CA_BUNDLE="$CERTS/Cloudflare_AWS_CA_bundle.pem"
+
+
+# Windows Integration Paths
+export WINDOWS_HOME="/mnt/c/Users/$USER"
+export WINDOWS_DESKTOP="$WINDOWS_HOME/Desktop"
+export WINDOWS_DOWNLOADS="$WINDOWS_HOME/Downloads"
+export WINDOWS_DOCUMENTS="$WINDOWS_HOME/Documents"
+
+# Development Tool Paths
+export PYENV_ROOT="$HOME/.pyenv"
+export NVM_DIR="$HOME/.nvm"
+
+# Add all development tools to PATH
+export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$NVM_DIR/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+
+export NODE_EXTRA_CA_CERTS=$CERTS/Cloudflare_CA.pem
+
+# Hash shortcuts for quick navigation
+hash -d dev="$DEV"
+hash -d bf="$BF"
+hash -d docs="$WINDOWS_DOCUMENTS"
+hash -d down="$WINDOWS_DOWNLOADS"
+
+# -----------------------------------------------------------------------------
+# Oh My Zsh Configuration
+# -----------------------------------------------------------------------------
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="powerlevel10k/powerlevel10k"
+ENABLE_CORRECTION="true"
+COMPLETION_WAITING_DOTS="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# -----------------------------------------------------------------------------
+# PowerLevel10k Configuration (Performance Optimized)
+# -----------------------------------------------------------------------------
+POWERLEVEL9K_DISABLE_HOT_RELOAD=true
+POWERLEVEL9K_COLOR_SCHEME="dark"
+POWERLEVEL9K_INSTANT_PROMPT=quiet
+
+# Prompt Elements Configuration
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
+  os_icon
+  dir
+  vcs
+  virtualenv
+  pyenv
+  node_version
+  prompt_char
+)
+
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
+  status
+  command_execution_time
+  background_jobs
+  load
+  time
+)
+
+# Directory Configuration
+POWERLEVEL9K_DIR_MAX_LENGTH=3
+POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_last
+POWERLEVEL9K_DIR_FOREGROUND=39  # Bright blue for better visibility
+POWERLEVEL9K_DIR_SHORTENED_FOREGROUND=39
+POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=39
+
+# VCS Configuration
+POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes git-untracked git-aheadbehind git-stash git-remotebranch git-tagname)
+POWERLEVEL9K_VCS_CLEAN_FOREGROUND=76  # Bright green
+POWERLEVEL9K_VCS_MODIFIED_FOREGROUND=220  # Bright yellow
+POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND=76  # Bright green
+POWERLEVEL9K_VCS_CONFLICTED_FOREGROUND=196  # Bright red
+POWERLEVEL9K_VCS_LOADING_FOREGROUND=244  # Light gray
+
+# Status Colors
+POWERLEVEL9K_STATUS_OK_FOREGROUND=76  # Bright green
+POWERLEVEL9K_STATUS_ERROR_FOREGROUND=196  # Bright red
+POWERLEVEL9K_TIME_FOREGROUND=81  # Cyan
+POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=220  # Bright yellow
+POWERLEVEL9K_NODE_VERSION_FOREGROUND=76  # Bright green
+POWERLEVEL9K_PYTHON_VERSION_FOREGROUND=220  # Bright yellow
+
+# -----------------------------------------------------------------------------
+# History Configuration
+# -----------------------------------------------------------------------------
+HISTSIZE=100000
+SAVEHIST=100000
+HISTFILE="$HOME/.zsh_history"
+
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_SPACE
+setopt EXTENDED_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt INC_APPEND_HISTORY
+setopt HIST_FIND_NO_DUPS
+setopt HIST_REDUCE_BLANKS
+
+# -----------------------------------------------------------------------------
+# Shell Options
+# -----------------------------------------------------------------------------
+setopt AUTO_CD
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+setopt PUSHD_MINUS
+setopt EXTENDED_GLOB
+setopt NO_CASE_GLOB
+setopt GLOB_COMPLETE
+setopt NO_BEEP
+setopt INTERACTIVE_COMMENTS
+setopt PROMPT_SUBST
+
+# -----------------------------------------------------------------------------
+# Completion System
+# -----------------------------------------------------------------------------
+autoload -U compinit colors
+colors
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' rehash true
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)
+
+# -----------------------------------------------------------------------------
+# Plugins Configuration
+# -----------------------------------------------------------------------------
+plugins=(
+    # Core utilities
+    git
+    git-flow
+    github
+
+    # Shell enhancements
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    zsh-history-substring-search
+    auto-notify
+    web-search
+    sudo
+    copypath
+    copyfile
+    jsontools
+    urltools
+
+    # Development tools
+    docker
+    docker-compose
+    kubectl
+    terraform
+    aws
+    # azure
+    # gcloud
+
+    # Language specific
+    python
+    pip
+    pipenv
+    poetry
+    node
+    npm
+    yarn
+    # rust
+    # golang
+
+    # Productivity
+    tmux
+    fzf
+    z
+    extract
+    colored-man-pages
+    command-not-found
+)
+
+# Load Oh My Zsh
+source $ZSH/oh-my-zsh.sh
+
+# -----------------------------------------------------------------------------
+# Plugin Configurations
+# -----------------------------------------------------------------------------
+
+# zsh-autosuggestions
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#909090"  # Lighter gray for better visibility
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+ZSH_AUTOSUGGEST_USE_ASYNC=true
+
+# zsh-syntax-highlighting
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+ZSH_HIGHLIGHT_STYLES[command]='fg=82,bold'  # Bright green
+ZSH_HIGHLIGHT_STYLES[alias]='fg=82,bold'  # Bright green
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=226,bold'  # Bright yellow
+ZSH_HIGHLIGHT_STYLES[function]='fg=81,bold'  # Bright cyan
+ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=39,bold'  # Bright blue
+
+# auto-notify
+AUTO_NOTIFY_THRESHOLD=30
+AUTO_NOTIFY_TITLE="Command finished!"
+AUTO_NOTIFY_BODY="took %elapsed seconds"
+AUTO_NOTIFY_IGNORE=("docker" "man" "less" "vim" "vi" "nano" "htop" "top" "ssh")
+
+# history-substring-search
+HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=82,fg=black,bold'  # Bright green background
+
+# -----------------------------------------------------------------------------
+# Key Bindings
+# -----------------------------------------------------------------------------
+bindkey -e  # Emacs key bindings
+
+# Navigation
+bindkey "^[[A" history-substring-search-up
+bindkey "^[[B" history-substring-search-down
+bindkey "^[[1;5C" forward-word      # Ctrl+Right
+bindkey "^[[1;5D" backward-word     # Ctrl+Left
+bindkey "^H" backward-kill-word     # Ctrl+Backspace
+bindkey "^[[3~" delete-char         # Delete key
+bindkey "^[[H" beginning-of-line    # Home
+bindkey "^[[F" end-of-line          # End
+
+# Custom shortcuts
+bindkey -s '^o' 'lfcd\n'
+bindkey -s '^f' 'fzf_cd\n'
+bindkey -s '^g' 'lazygit\n'
+bindkey -s '^t' 'tmux_sessionizer\n'
+
+# -----------------------------------------------------------------------------
+# Aliases - System & Navigation
+# -----------------------------------------------------------------------------
+
+# Enhanced ls aliases with exa if available
+if command -v exa &> /dev/null; then
+    alias ls='exa --icons'
+    alias ll='exa -alh --icons --git'
+    alias la='exa -a --icons'
+    alias lt='exa --tree --icons'
+    alias llt='exa -alh --tree --icons --git'
+else
+    alias ll='ls -alh --color=auto'
+    alias la='ls -la --color=auto'
+    alias ls='ls --color=auto'
+fi
+
+# Navigation shortcuts
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ~='cd ~'
+alias -- -='cd -'
+alias cl="cd $1 && ls -a"
+
+# Windows integration
+alias cdwin='cd $WINDOWS_HOME'
+alias cddesk='cd $WINDOWS_DESKTOP'
+alias cddown='cd $WINDOWS_DOWNLOADS'
+alias cddoc='cd $WINDOWS_DOCUMENTS'
+alias explorer='explorer.exe'
+alias notepad='notepad.exe'
+alias calc='calc.exe'
+
+# Quick edits
+alias zshrc="$EDITOR ~/.zshrc"
+alias zshenv="$EDITOR ~/.zshenv"
+alias gitconfig="$EDITOR ~/.gitconfig"
+alias sshconfig="$EDITOR ~/.ssh/config"
+alias hosts="sudo $EDITOR /etc/hosts"
+
+# System utilities
+alias grep='grep --color=auto'
+alias df='df -h'
+alias du='du -h'
+alias free='free -h'
+alias ps='ps aux | grep'
+alias psg='ps aux | grep -i'
+alias port='netstat -tulanp | grep'
+alias listening='netstat -an | grep LISTEN'
+alias path='echo -e ${PATH//:/\\n}'
+alias reload='source ~/.zshrc'
+alias cls='clear'
+
+# Safety nets
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias mkdir='mkdir -pv'
+alias main='git branch -D main && git checkout origin/main'
+
+# -----------------------------------------------------------------------------
+# Aliases - Development Tools
+# -----------------------------------------------------------------------------
+
+# Euna-Bonfire
+alias e_identity="$EDITOR $BF/identity"
+alias e_kindling="$EDITOR $BF/bonfire-kindling"
+alias e_react="$EDITOR $BF/bonfire-react-client"
+alias identity="cd $BF/identity && nvm use && npx nx dev identity-flows"
+alias kindling="cd $BF/bonfire-kindling && nvm use && npm start"
+alias react="cd $BF/bonfire-react-client && nvm use &&  npm run start bonfire-app"
+alias i18n="export BONFIRE_GOOGLE_TRANSLATE_API_KEY=AIzaSyArnP9mndS7jFE1koOxPcAyCFOWVl91tgw && npm run i18n"
+alias generatereport="sam build && sam local invoke -e project-report-document-service/test/event.json"
+
+
+# Python development
+alias py='python'
+alias py3='python3'
+alias pip='pip3'
+alias venv='python -m venv'
+alias activate='source venv/bin/activate'
+alias deactivate='deactivate'
+alias freeze='pip freeze > requirements.txt'
+alias install='pip install -r requirements.txt'
+alias jupyter='jupyter notebook'
+alias jlab='jupyter lab'
+alias pytest='python -m pytest'
+alias black='python -m black'
+alias flake='python -m flake8'
+alias mypy='python -m mypy'
+
+# Node.js development
+alias ni='npm install'
+alias nid='npm install --save-dev'
+alias nig='npm install -g'
+alias nr='npm run'
+alias nrs='npm run start'
+alias nrd='npm run dev'
+alias nrb='npm run build'
+alias nrt='npm run test'
+alias nrw='npm run watch'
+alias ncl='npm cache clean --force'
+alias ncu='npx npm-check-updates'
+alias yarn='yarn --emoji true'
+
+# VS Code shortcuts
+alias c='code .'
+alias cr='code -r .'
+alias cn='code -n'
+
+# -----------------------------------------------------------------------------
+# Functions - Enhanced Productivity
+# -----------------------------------------------------------------------------
+
+
+# Process management
+killport() {
+    local port="$1"
+    if [ -z "$port" ]; then
+        echo "Usage: killport <port>"
+        return 1
+    fi
+
+    local pid=$(lsof -t -i:"$port")
+    if [ -n "$pid" ]; then
+        kill -9 "$pid"
+        echo "Killed process on port $port (PID: $pid)"
+    else
+        echo "No process found on port $port"
+    fi
+}
+
+
+# -----------------------------------------------------------------------------
+# Development Environment Initializers
+# -----------------------------------------------------------------------------
+
+# Initialize pyenv
+if command -v pyenv &> /dev/null; then
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
+
+# Initialize nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# Initialize conda
+if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+    . "$HOME/miniconda3/etc/profile.d/conda.sh"
+fi
+
+# -----------------------------------------------------------------------------
+# Custom Prompt Commands
+# -----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
+# Email shortcut
+# -----------------------------------------------------------------------------
+alias em="echo 'tejinder.singh@eunasolutions.com' | pbcopy && echo 'Email copied to clipboard!'"
+alias br="echo 'brandon@gobonfire.com' | pbcopy && echo 'Email copied to clipboard!'"
+
+# -----------------------------------------------------------------------------
+# WSL Specific Configurations
+# -----------------------------------------------------------------------------
+
+# Fix WSL2 clipboard integration
+if grep -q "microsoft" /proc/version; then
+    alias pbcopy='clip.exe'
+    alias pbpaste='powershell.exe -command "Get-Clipboard"'
+fi
+
+# WSL2 GUI support
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+export LIBGL_ALWAYS_INDIRECT=1
+
+# -----------------------------------------------------------------------------
+# Performance Optimizations
+# -----------------------------------------------------------------------------
+
+# Disable terminal flow control
+stty -ixon
+
+# Faster key repeat
+xset r rate 300 50 2>/dev/null
+
+# Enable Powerlevel10k instant prompt
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# -----------------------------------------------------------------------------
+# Local Configurations
+# -----------------------------------------------------------------------------
+
+# Load any additional local configurations
+[[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
+
+# Load private/sensitive configurations
+[[ -f "$HOME/.zshrc.private" ]] && source "$HOME/.zshrc.private"
+
+# Load Powerlevel10k configuration
+[[ -f "$HOME/.p10k.zsh" ]] && source "$HOME/.p10k.zsh"
+
+export AWS_PROFILE=dev
