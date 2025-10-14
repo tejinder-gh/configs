@@ -1,0 +1,284 @@
+{
+  // ✨ UI & UX - Focused & Clean
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.editor.enablePreviewFromQuickOpen": true,
+  "workbench.startupEditor": "none",
+  "workbench.tree.indent": 12,
+  "workbench.tree.renderIndentGuides": "always",
+
+  // 🔤 Typography & Display
+  "editor.fontFamily": "Fira Code, JetBrains Mono, Consolas, monospace",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 16,
+  "editor.lineHeight": 22,
+  "editor.minimap.enabled": false,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.cursorBlinking": "phase",
+  "editor.scrollBeyondLastLine": false,
+  "editor.smoothScrolling": true,
+  "editor.mouseWheelScrollSensitivity": 2,
+  // 🚀 Terminal - Clean & Efficient
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.cursorStyle": "underline",
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.scrollback": 10000,
+  "terminal.integrated.enablePersistentSessions": true,
+  "terminal.integrated.showExitAlert": false,
+  "terminal.integrated.confirmOnExit": "never",
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.suggest.enabled": true,
+  "terminal.integrated.smoothScrolling": true,
+  "terminal.integrated.mouseWheelScrollSensitivity": 2,
+  "terminal.integrated.stickyScroll.enabled": true,
+  // 📝 Language-Specific Formatting
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python",
+    "editor.formatOnSave": true
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    }
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+  // 🔬 Python & Data Science - Streamlined
+  "python.terminal.activateEnvironment": true,
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.autoImportCompletions": true,
+  "jupyter.askForKernelRestart": false,
+  "jupyter.interactiveWindowMode": "perFile",
+  "jupyter.showVariableViewWhenDebugging": true,
+  // 🧪 JavaScript/TypeScript - Enhanced DX
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.suggest.autoImports": true,
+  "typescript.suggest.includeCompletionsForImportStatements": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.preferences.includePackageJsonAutoImports": "auto",
+  "javascript.suggest.autoImports": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+
+
+  // 📦 Package Manager
+  "npm.packageManager": "yarn",
+  // 🔍 Search & Files - Optimized
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/__pycache__": true,
+    "**/.git": true,
+    "**/.venv": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/.next": true,
+    "**/coverage": true,
+    "**/.nyc_output": true
+  },
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/.idea": true,
+    "**/.vscode/settings.json": false
+  },
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "files.associations": {
+    "*.env*": "dotenv"
+  },
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/*/**": true,
+    "**/.hg/store/**": true
+  },
+  "files.simpleDialog.enable": true,
+  "window.restoreWindows": "all",
+  "window.confirmBeforeClose": "keyboardOnly",
+  // 🧠 IntelliSense - Smart & Fast
+  "editor.quickSuggestions": {
+    "other": "on",
+    "comments": "off",
+    "strings": "on"
+  },
+  "editor.suggestSelection": "first",
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+  "editor.suggest.showStatusBar": true,
+  "editor.suggest.preview": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.suggestOnTriggerCharacters": true,
+  "editor.acceptSuggestionOnCommitCharacter": true,
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.snippetSuggestions": "top",
+  "editor.tabCompletion": "on",
+  "editor.wordBasedSuggestions": "matchingDocuments",
+  "editor.inlayHints.enabled": "onUnlessPressed",
+  "editor.lightbulb.enabled": "on",
+  // 🔧 Core Editor - Productivity Focused
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "explorer.compactFolders": false,
+  "explorer.openEditors.visible": 1,
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.js, ${capture}.d.ts, ${capture}.map",
+    "*.tsx": "${capture}.js",
+    "*.js": "${capture}.js.map, ${capture}.min.js",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb",
+    "tsconfig.json": "tsconfig.*.json",
+    ".env": ".env.*",
+    "docker-compose.yml": "docker-compose.*.yml, Dockerfile*"
+  },
+  "problems.showCurrentInStatus": true,
+  "problems.decorations.enabled": true,
+  "problems.sortOrder": "severity",
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "git.autofetchPeriod": 180,
+  "git.decorations.enabled": true,
+  "git.timeline.enabled": true,
+  "git.openRepositoryInParentFolders": "always",
+  "scm.diffDecorations": "all",
+  "scm.diffDecorationsGutterWidth": 2,
+  "breadcrumbs.showClasses": true,
+  "breadcrumbs.showFunctions": true,
+  "breadcrumbs.showVariables": false,
+  // 🚀 Performance & Behavior
+  "security.workspace.trust.untrustedFiles": "open",
+  "security.workspace.trust.banner": "never",
+  "security.workspace.trust.startupPrompt": "never",
+  "extensions.autoUpdate": "onlyEnabledExtensions",
+  "extensions.ignoreRecommendations": false,
+  "workbench.settings.enableNaturalLanguageSearch": false,
+  "workbench.tips.enabled": false,
+  "workbench.welcomePage.walkthroughs.openOnInstall": false,
+  "workbench.commandPalette.history": 1000,
+  "workbench.quickOpen.closeOnFocusLost": false,
+  "workbench.list.smoothScrolling": true,
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.value": 10,
+  "workbench.editor.limit.perEditorGroup": false,
+  "workbench.editor.revealIfOpen": true,
+  "workbench.editor.closeOnFileDelete": true,
+  "update.showReleaseNotes": false,
+  "telemetry.telemetryLevel": "off",
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": false,
+  "editor.formatOnSaveMode": "modifications",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit",
+    "source.removeUnusedImports": "explicit"
+  },
+  "editor.accessibilitySupport": "off",
+  "editor.hover.delay": 300,
+  "editor.quickSuggestionsDelay": 10,
+
+  // 🎯 Advanced Editor Features
+  "editor.wordWrap": "on",
+  "editor.rulers": [80, 120],
+  "editor.renderWhitespace": "boundary",
+  "editor.renderControlCharacters": false,
+  "editor.semanticHighlighting.enabled": true,
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "editor.linkedEditing": true,
+  "editor.stickyScroll.enabled": true,
+  "editor.stickyScroll.maxLineCount": 5,
+  "editor.occurrencesHighlight": "singleFile",
+  "editor.find.autoFindInSelection": "multiline",
+  "editor.find.seedSearchStringFromSelection": "selection",
+  "editor.foldingHighlight": true,
+  "editor.foldingImportsByDefault": false,
+  "editor.guides.bracketPairs": "active",
+  "editor.guides.highlightActiveBracketPair": true,
+  "editor.unicodeHighlight.ambiguousCharacters": true,
+  "editor.unicodeHighlight.invisibleCharacters": true,
+  "editor.gotoLocation.multipleDefinitions": "goto",
+  "editor.gotoLocation.multipleImplementations": "goto",
+  "editor.colorDecorators": true,
+  "editor.colorDecoratorsActivatedOn": "hover",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.renderSideBySide": true,
+  "diffEditor.codeLens": true,
+  "diffEditor.wordWrap": "on",
+
+  // ⚙️ Extension-Specific Settings
+  "turboConsoleLog.includeFilename": true,
+  "turboConsoleLog.includeLineNum": true,
+  "turboConsoleLog.logMessagePrefix": "📝",
+  "turboConsoleLog.quote": "`",
+  "turboConsoleLog.delimiterInsideMessage": "→",
+  "remote.autoForwardPortsSource": "hybrid",
+  "yaml.schemas": {
+    "file:///c%3A/Users/TejinderSingh/.vscode/extensions/atlassian.atlascode-4.0.2/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+  },
+  "files.refactoring.autoSave": false,
+  "workbench.editor.tabActionLocation": "right",
+  "remote.SSH.remotePlatform": {
+    "cloud9": "linux"
+  },
+  "editor.defaultFormatter": "biomejs.biome",
+  "chat.mcp.autostart": "newAndOutdated",
+  "github.copilot.chat.newWorkspace.useContext7": true,
+  "inlineChat.finishOnType": true,
+  "inlineChat.hideOnRequest": true,
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "chat.agent.maxRequests": 100,
+  "chat.agent.thinkingStyle": "collapsedPreview",
+  "github.copilot.chat.agent.thinkingTool": true,
+  "github.copilot.chat.codesearch.enabled": true,
+  "chat.tools.terminal.autoApprove": {
+    "git branch": true,
+    "npm run typecheck": true,
+    "npm run lint": true,
+    "npm run test-from-host": true,
+    "npm run k8s:sync": true,
+    "npm run test-integration-from-host": true
+  },
+
+}
